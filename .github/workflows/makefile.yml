@@ -14,6 +14,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - uses: snyk/actions/node@master
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+    
+    - uses: actions/setup-node@v3
+      with: 
+        cache: 'npm'
+        
     - name: Run Setup
       run: make setup
       
